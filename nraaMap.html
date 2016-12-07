@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Should override IE compatibility mode -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- Fit to device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Does the intranet search index pages? if so consider content -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Tab Title -->
+  <title>NRAA Ranges</title>
+
+  <!-- Core Bootstrap CSS -->
+  <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+  <!-- Leaflet CSS -->
+  <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet">
+  
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+  <!-- bootstrap js-->
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <!-- Div for map -->
+  <div id='map' style="height: 900px">
+  
+  <!-- Data and Map -->
+  <script>
+  
+	// Data
+	var ranges = 
+		[
+		  {
+			"Range": "Cessnock",
+			"Lat": -32.864497,
+			"Long": 151.350778,
+			"State": "NSW",
+			"Type": "Imperial",
+			"Max_Distance": "900y",
+			"Targets": 7,
+			"Electronic": "Yes",
+			"ET_System": "Kongsberg"
+		  },
+		  {
+			"Range": "Hornsby",
+			"Lat": -33.68712,
+			"Long": 151.084996,
+			"State": "NSW",
+			"Type": "Metric",
+			"Max_Distance": "800m",
+			"Targets": 14,
+			"Electronic": "Yes",
+			"ET_System": "HEXTA"
+		  },
+		  {
+			"Range": "Malabar",
+			"Lat": -33.958751,
+			"Long": 151.260098,
+			"State": "NSW",
+			"Type": "Metric",
+			"Max_Distance": "800m",
+			"Targets": 30,
+			"Electronic": "Yes",
+			"ET_System": "Mixed"
+		  },
+		  {
+			"Range": "Gosford",
+			"Lat": -33.455674,
+			"Long": 151.271125,
+			"State": "NSW",
+			"Type": "Mixed",
+			"Max_Distance": "600m",
+			"Targets": 7,
+			"Electronic": "Yes",
+			"ET_System": "HEXTA"
+		  },
+		  {
+			"Range": "Belmont",
+			"Lat": -27.513646,
+			"Long": 153.131253,
+			"State": "QLD",
+			"Type": "Imperial",
+			"Max_Distance": "1000y",
+			"Targets": 50,
+			"Electronic": "Yes",
+			"ET_System": "HEXTA"
+		  },
+		  {
+			"Range": "Bendigo",
+			"Lat": -36.749823,
+			"Long": 144.33791,
+			"State": "VIC",
+			"Type": "Imperial",
+			"Max_Distance": "1000y",
+			"Targets": 30,
+			"Electronic": "No",
+			"ET_System": "N/A"
+		  }
+		];
+		
+	console.log(ranges);
+  
+    // Map
+	var map = L.map('map').setView( [-27.833, 133.583], 5).fitBounds([ [-43.21, 147.8],[-12.5, 117.2] ]);
+	  
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+		
+		for (var i = 0; i < ranges.length; i++) {
+			marker = new L.marker( [ranges[i].Lat,ranges[i].Long] )
+				.bindPopup(ranges[i].Range, ranges[i].Type)
+				.addTo(map)
+				.on('click', function(e) {
+					map.setView(e.latlng, 13)}
+		)};	
+
+	  
+  </script>
+	
+</body>
+
+</html>
