@@ -14,17 +14,19 @@
   <!-- Tab Title -->
   <title>NRAA Ranges</title>
 
-  <!-- Core Bootstrap CSS -->
-  <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
-
   <!-- Leaflet CSS -->
-  <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet"/>
+
+  <!-- leaflet-zoom-min CSS -->
+  <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
+  <link href="L.Control.ZoomMin.css", rel="stylesheet", media="screen"/>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 
-  <!-- bootstrap js-->
-  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <!-- leaflet-zoom-min JS -->
+  <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
+  <script src="L.Control.ZoomMin.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +39,7 @@
 <body>
 
   <!-- Div for map -->
-  <div id='map' style="height: 900px">
+  <div id='map' style="height: 800px">
 
   <!-- Data and Map -->
   <script>
@@ -181,34 +183,44 @@
 
 	console.log(ranges);
 
-    // Map
-	var map = L.map('map')
-		.setView( [-27.833, 133.583], 5);
+    // map
+    var map = L.map('map', {
+      center: [-27.833, 133.583],
+      zoom: 4,
+      minZoom: 5,
+      maxZoom: 16,
+      zoomControl: false
+    });
 
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
+    // add tiles and attribution
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
 
-			// add markers for each data point
-			for (var i = 0; i < ranges.length; i++) {
+    // zoom control for leaflet-zoom-min
+    map.addControl(new L.Control.ZoomMin(''))
 
-			    // popup content
-			    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
-							+ "<b>Type:</b> " + ranges[i].Type + "<br>"
-							+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
-							+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
-							+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
-							+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
-							+ "<b>Clubs:</b> " + ranges[i].Clubs
+		// add markers for each data point
+		for (var i = 0; i < ranges.length; i++) {
 
-				marker = new L.marker( [ranges[i].Lat,ranges[i].Long] )
+		    // popup content
+		    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
+						+ "<b>Type:</b> " + ranges[i].Type + "<br>"
+						+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
+						+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
+						+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
+						+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
+						+ "<b>Clubs:</b> " + ranges[i].Clubs
+
+        // add popups
+				marker = new L.marker([ranges[i].Lat,ranges[i].Long])
 					.bindPopup(popup)
 					.addTo(map)
 					.on('click', function (e) {
 						map.setView(e.latlng, 13);}
           /*.on('mouseover', function (e) {
   	        this.openPopup();}*/
-			)};	
+			)};
 
 </script>
 
