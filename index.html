@@ -19,7 +19,7 @@
 
   <!-- Leaflet CSS -->
   <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet">
-  
+
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 
@@ -38,12 +38,12 @@
 
   <!-- Div for map -->
   <div id='map' style="height: 900px">
-  
+
   <!-- Data and Map -->
   <script>
-  
+
 	// Data
-	var ranges = 
+	var ranges =
 		[
 		  {
 			"Range": "Cessnock",
@@ -152,7 +152,7 @@
 			"Electronic": "Yes",
 			"ET_System": "Kongsberg",
 			"Clubs": "Bungendore, Canberra"
-		  }, 
+		  },
 		  {
 			"Range": "Townsville",
 			"Lat": -19.359482,
@@ -164,39 +164,54 @@
 			"Electronic": "?",
 			"ET_System": "?",
 			"Clubs": "Townsville Marksmen"
-		  } 
+		  },
+		  {
+			"Range": "Wingham",
+			"Lat": -31.847171,
+			"Long": 152.368060,
+			"State": "NSW",
+			"Type": "Imperial/Metric",
+			"Max_Distance": "1000y",
+			"Targets": "12",
+			"Electronic": "Yes",
+			"ET_System": "HEXTA",
+			"Clubs": "Wingham"
+		  }
 		];
-		
-	console.log(ranges);	
-  
+
+	console.log(ranges);
+
     // Map
-	var map = L.map('map').setView( [-27.833, 133.583], 5);
-	  
+	var map = L.map('map')
+		.setView( [-27.833, 133.583], 5);
+
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
-		
-		// add markers for each data point
-		for (var i = 0; i < ranges.length; i++) {
-		
-		    // popup content
-		    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
-						+ "<b>Type:</b> " + ranges[i].Type + "<br>"
-						+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
-						+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
-						+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
-						+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
-						+ "<b>Clubs:</b> " + ranges[i].Clubs
-		
-			marker = new L.marker( [ranges[i].Lat,ranges[i].Long] )
-				.bindPopup(popup)
-				.addTo(map)
-				.on('click', function (e) {
-					map.setView(e.latlng, 13)}    
-		)};	
-	  
-  </script>
-	
+
+			// add markers for each data point
+			for (var i = 0; i < ranges.length; i++) {
+
+			    // popup content
+			    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
+							+ "<b>Type:</b> " + ranges[i].Type + "<br>"
+							+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
+							+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
+							+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
+							+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
+							+ "<b>Clubs:</b> " + ranges[i].Clubs
+
+				marker = new L.marker( [ranges[i].Lat,ranges[i].Long] )
+					.bindPopup(popup)
+					.addTo(map)
+					.on('click', function (e) {
+						map.setView(e.latlng, 13);}
+          /*.on('mouseover', function (e) {
+  	        this.openPopup();}*/
+			)};	
+
+</script>
+
 </body>
 
 </html>
