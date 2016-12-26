@@ -70,7 +70,43 @@ var ranges =
       "Targets": 50,
       "Electronic": "Yes",
       "ET_System": "HEXTA",
-      "Clubs": "Central, Pacific, Natives, University of Qld"
+      "Clubs": "Brisbane, Brisbane Mariners, Central, Gold Coast, Pacific, Natives, University of Qld"
+    },
+    {
+      "Range": "Beaudesert",
+      "Lat": -27.999842,
+      "Long": 153.072081,
+      "State": "QLD",
+      "Type": "Imperial",
+      "Max_Distance": "700y",
+      "Targets": "?",
+      "Electronic": "Yes",
+      "ET_System": "OzScore",
+      "Clubs": "Beaudesert"
+    },
+    {
+      "Range": "Ipswich",
+      "Lat": -27.745645,
+      "Long": 152.847601,
+      "State": "QLD",
+      "Type": "?",
+      "Max_Distance": "?",
+      "Targets": "8",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Ipswich & District"
+    },
+    {
+      "Range": "North Arm",
+      "Lat": -26.525591,
+      "Long": 152.974641,
+      "State": "QLD",
+      "Type": "Imperial",
+      "Max_Distance": "700y",
+      "Targets": "?",
+      "Electronic": "Yes",
+      "ET_System": "Kongsberg",
+      "Clubs": "North Arm"
     },
     {
       "Range": "Bendigo",
@@ -479,5 +515,17 @@ var ranges =
       "Electronic": "Yes",
       "ET_System": "HEXTA",
       "Clubs": "Hamilton"
+    },
+    {
+      "Range": "Grantville",
+      "Lat": -38.429892,
+      "Long": 145.512167,
+      "State": "VIC",
+      "Type": "Imperial",
+      "Max_Distance": "600y",
+      "Targets": "5",
+      "Electronic": "No",
+      "ET_System": "N/A",
+      "Clubs": "Fitzroy/Caulfield, MCC"
     }
   ];
