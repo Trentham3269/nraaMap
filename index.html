@@ -31,13 +31,66 @@
     <script src="ranges.js"></script>
   </head>
   <body>
+    <!-- Div for radio buttons -->
+    <div id='selState'>
+      <input type="radio" name="state" id="state_ALL" value="ALL" checked> ALL<br>
+      <input type="radio" name="state" id="state_ACT" value="ACT"> ACT<br>
+      <input type="radio" name="state" id="state_NSW" value="NSW"> NSW<br>
+      <input type="radio" name="state" id="state_NT"  value="NT"> NT<br>
+      <input type="radio" name="state" id="state_QLD" value="QLD"> QLD<br>
+      <input type="radio" name="state" id="state_SA"  value="SA"> SA<br>
+      <input type="radio" name="state" id="state_TAS" value="TAS"> TAS<br>
+      <input type="radio" name="state" id="state_VIC" value="VIC"> VIC<br>
+      <input type="radio" name="state" id="state_WA"  value="WA"> WA<br>
+    </div>
+
     <!-- Div for map -->
     <div id='map' style="height: 800px">
 
     <!-- Data and Map -->
     <script>
-    	// Print array to console
-    	console.log(ranges);
+      // Print full array to console
+      console.log(ranges);
+
+      // Assign radio button selection to variable
+      var rangesSubset;
+        if (document.getElementById("state_ALL").checked) {
+          rangesSubset = ranges;
+        } else if (document.getElementById("state_ACT").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "ACT";
+          });
+        } else if (document.getElementById("state_NSW").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "NSW";
+          });
+        } else if (document.getElementById("state_NT").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "NT";
+          });
+        } else if (document.getElementById("state_QLD").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "QLD";
+          });
+        } else if (document.getElementById("state_SA").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "SA";
+          });
+        } else if (document.getElementById("state_TAS").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "TAS";
+          });
+        } else if (document.getElementById("state_VIC").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "VIC";
+          });
+        } else if (document.getElementById("state_WA").checked) {
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === "WA";
+          });
+        }
+
+      console.log(rangesSubset);
 
         // map
         var map = L.map('map', {
@@ -57,19 +110,19 @@
         map.addControl(new L.Control.ZoomMin(''))
 
     		// add markers for each data point
-    		for (var i = 0; i < ranges.length; i++) {
+    		for (var i = 0; i < rangesSubset.length; i++) {
 
     		    // popup content
-    		    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
-    						+ "<b>Type:</b> " + ranges[i].Type + "<br>"
-    						+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
-    						+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
-    						+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
-    						+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
-    						+ "<b>Clubs:</b> " + ranges[i].Clubs
+    		    var popup = "<b>Range:</b> " + rangesSubset[i].Range + "<br>"
+    						+ "<b>Type:</b> " + rangesSubset[i].Type + "<br>"
+    						+ "<b>Maximum Distance:</b> " + rangesSubset[i].Max_Distance + "<br>"
+    						+ "<b>No. of Targets:</b> " + rangesSubset[i].Targets + "<br>"
+    						+ "<b>Electronic Targets:</b> " + rangesSubset[i].Electronic + "<br>"
+    						+ "<b>Electronic System:</b> " + rangesSubset[i].ET_System + "<br>"
+    						+ "<b>Clubs:</b> " + rangesSubset[i].Clubs
 
             // add popups
-    				marker = new L.marker([ranges[i].Lat,ranges[i].Long])
+    				marker = new L.marker([rangesSubset[i].Lat,rangesSubset[i].Long])
     					.bindPopup(popup)
     					.addTo(map)
     					.on('click', function (e) {
