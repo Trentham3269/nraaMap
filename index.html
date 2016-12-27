@@ -39,6 +39,27 @@
     	// Print array to console
     	console.log(ranges);
 
+      // Test layers
+      var bathurst = L.marker([-33.445541, 149.544611]).bindPopup("<b>Range:</b> Bathurst" + "<br>" + "<b>Type:</b> Imperial" + "<br>"),
+          cessnock = L.marker([-32.864497, 151.350778]).bindPopup("Cessnock"),
+          hornsby  = L.marker([-33.68712, 151.084996]).bindPopup("Hornsby"),
+          malabar  = L.marker([-33.958751, 151.260098]).bindPopup("Malabar"),
+          gosford  = L.marker([-33.455674, 151.271125]).bindPopup("Gosford");
+
+      var nsw = L.layerGroup([bathurst, cessnock, hornsby, malabar, gosford]);
+
+      var beaudesert = L.marker([-27.999842, 153.072081]).bindPopup("Beaudesert"),
+          belmont    = L.marker([-27.513646, 153.131253]).bindPopup("Belmont"),
+          ipswich    = L.marker([-27.745645, 152.847601]).bindPopup("Ipswich"),
+          northArm   = L.marker([-26.525591, 152.974641]).bindPopup("North Arm");
+
+      var qld = L.layerGroup([beaudesert, belmont, ipswich, northArm]);
+
+      var overlayStates = {
+        "NSW": nsw,
+        "QLD": qld
+      };
+
         // map
         var map = L.map('map', {
           center: [-27.833, 133.583],
@@ -53,30 +74,10 @@
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
 
+        L.control.layers(null, overlayStates).addTo(map);
+
         // zoom control for leaflet-zoom-min
         map.addControl(new L.Control.ZoomMin(''))
-
-    		// add markers for each data point
-    		for (var i = 0; i < ranges.length; i++) {
-
-    		    // popup content
-    		    var popup = "<b>Range:</b> " + ranges[i].Range + "<br>"
-    						+ "<b>Type:</b> " + ranges[i].Type + "<br>"
-    						+ "<b>Maximum Distance:</b> " + ranges[i].Max_Distance + "<br>"
-    						+ "<b>No. of Targets:</b> " + ranges[i].Targets + "<br>"
-    						+ "<b>Electronic Targets:</b> " + ranges[i].Electronic + "<br>"
-    						+ "<b>Electronic System:</b> " + ranges[i].ET_System + "<br>"
-    						+ "<b>Clubs:</b> " + ranges[i].Clubs
-
-            // add popups
-    				marker = new L.marker([ranges[i].Lat,ranges[i].Long])
-    					.bindPopup(popup)
-    					.addTo(map)
-    					.on('click', function (e) {
-    						map.setView(e.latlng, 13);}
-              /*.on('mouseover', function (e) {
-      	        this.openPopup();}*/
-    			)};
     </script>
   </body>
 </html>
