@@ -20,6 +20,12 @@
     <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
     <link href="L.Control.ZoomMin.css", rel="stylesheet", media="screen"/>
 
+    <!-- jQuery JS -->
+    <!-- https://code.jquery.com/ -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 
@@ -33,7 +39,6 @@
   <body>
     <!-- Div for radio buttons -->
     <div id='selState'>
-      <input type="radio" name="state" id="state_ALL" value="ALL" checked> ALL<br>
       <input type="radio" name="state" id="state_ACT" value="ACT"> ACT<br>
       <input type="radio" name="state" id="state_NSW" value="NSW"> NSW<br>
       <input type="radio" name="state" id="state_NT"  value="NT"> NT<br>
@@ -49,48 +54,23 @@
 
     <!-- Data and Map -->
     <script>
-      // Print full array to console
+      // Print full array to console to confirm expected behaviour
       console.log(ranges);
 
       // Assign radio button selection to variable
-      var rangesSubset;
-        if (document.getElementById("state_ALL").checked) {
-          rangesSubset = ranges;
-        } else if (document.getElementById("state_ACT").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "ACT";
-          });
-        } else if (document.getElementById("state_NSW").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "NSW";
-          });
-        } else if (document.getElementById("state_NT").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "NT";
-          });
-        } else if (document.getElementById("state_QLD").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "QLD";
-          });
-        } else if (document.getElementById("state_SA").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "SA";
-          });
-        } else if (document.getElementById("state_TAS").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "TAS";
-          });
-        } else if (document.getElementById("state_VIC").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "VIC";
-          });
-        } else if (document.getElementById("state_WA").checked) {
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === "WA";
-          });
-        }
+      $("#selState").on("click", function() {
+        var rangesState = $("input[type='radio'][name='state']:checked").val();
 
-      console.log(rangesSubset);
+        console.log(rangesState);
+
+        // Subset data based on user selection
+        rangesSubset = ranges.filter(function (p) {
+          return p.State === rangesState;
+        });
+
+        console.log(rangesSubset);
+
+      });
 
         // map
         var map = L.map('map', {
