@@ -57,21 +57,6 @@
       // Print full array to console to confirm expected behaviour
       console.log(ranges);
 
-      // Assign radio button selection to variable
-      $("#selState").on("click", function() {
-        var rangesState = $("input[type='radio'][name='state']:checked").val();
-
-        console.log(rangesState);
-
-        // Subset data based on user selection
-        rangesSubset = ranges.filter(function (p) {
-          return p.State === rangesState;
-        });
-
-        console.log(rangesSubset);
-
-      });
-
         // map
         var map = L.map('map', {
           center: [-27.833, 133.583],
@@ -89,27 +74,43 @@
         // zoom control for leaflet-zoom-min
         map.addControl(new L.Control.ZoomMin(''))
 
-    		// add markers for each data point
-    		for (var i = 0; i < rangesSubset.length; i++) {
+        // Assign radio button selection to variable
+        $("#selState").on("click", function() {
 
-    		    // popup content
-    		    var popup = "<b>Range:</b> " + rangesSubset[i].Range + "<br>"
-    						+ "<b>Type:</b> " + rangesSubset[i].Type + "<br>"
-    						+ "<b>Maximum Distance:</b> " + rangesSubset[i].Max_Distance + "<br>"
-    						+ "<b>No. of Targets:</b> " + rangesSubset[i].Targets + "<br>"
-    						+ "<b>Electronic Targets:</b> " + rangesSubset[i].Electronic + "<br>"
-    						+ "<b>Electronic System:</b> " + rangesSubset[i].ET_System + "<br>"
-    						+ "<b>Clubs:</b> " + rangesSubset[i].Clubs
+          var rangesState = $("input[type='radio'][name='state']:checked").val();
 
-            // add popups
-    				marker = new L.marker([rangesSubset[i].Lat,rangesSubset[i].Long])
-    					.bindPopup(popup)
-    					.addTo(map)
-    					.on('click', function (e) {
-    						map.setView(e.latlng, 13);}
-              /*.on('mouseover', function (e) {
-      	        this.openPopup();}*/
-    			)};
+          console.log(rangesState);
+
+          // Subset data based on user selection
+          rangesSubset = ranges.filter(function (p) {
+            return p.State === rangesState;
+          });
+
+          console.log(rangesSubset);
+
+          // add markers for each data point
+      		for (var i = 0; i < rangesSubset.length; i++) {
+
+      		    // popup content
+      		    var popup = "<b>Range:</b> " + rangesSubset[i].Range + "<br>"
+      						+ "<b>Type:</b> " + rangesSubset[i].Type + "<br>"
+      						+ "<b>Maximum Distance:</b> " + rangesSubset[i].Max_Distance + "<br>"
+      						+ "<b>No. of Targets:</b> " + rangesSubset[i].Targets + "<br>"
+      						+ "<b>Electronic Targets:</b> " + rangesSubset[i].Electronic + "<br>"
+      						+ "<b>Electronic System:</b> " + rangesSubset[i].ET_System + "<br>"
+      						+ "<b>Clubs:</b> " + rangesSubset[i].Clubs
+
+              // add popups
+      				marker = new L.marker([rangesSubset[i].Lat,rangesSubset[i].Long])
+      					.bindPopup(popup)
+      					.addTo(map)
+      					.on('click', function (e) {
+      						map.setView(e.latlng, 13);}
+                /*.on('mouseover', function (e) {
+        	        this.openPopup();}*/
+      			)};
+
+        });
     </script>
   </body>
 </html>
