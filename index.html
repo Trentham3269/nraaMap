@@ -2,6 +2,14 @@
 <html lang="en">
   <head>
     <style>
+      .info {
+  				padding: 6px 8px;
+  				font: 14px/16px Arial, Helvetica, sans-serif;
+  				background: white;
+  				background: rgba(255,255,255,0.8);
+  				box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  				border-radius: 5px;
+      }
     </style>
     <meta charset="utf-8">
     <!-- Should override IE compatibility mode -->
@@ -70,7 +78,7 @@
 
         // Information to be displayed
         info.update = function (props) {
-          this._div.innerHTML = ('<div id="selState">' +
+          this._div.innerHTML = '<div id="selState">' +
                                   '<input type="radio" name="state" id="state_ACT" value="ACT"> ACT<br>' +
                                   '<input type="radio" name="state" id="state_NSW" value="NSW"> NSW<br>' +
                                   '<input type="radio" name="state" id="state_NT"  value="NT"> NT<br>'   +
@@ -79,7 +87,7 @@
                                   '<input type="radio" name="state" id="state_TAS" value="TAS"> TAS<br>' +
                                   '<input type="radio" name="state" id="state_VIC" value="VIC"> VIC<br>' +
                                   '<input type="radio" name="state" id="state_WA"  value="WA"> WA<br>'   +
-                                '</div>')
+                                '</div>'
         };
 
         // Add the info to the map
