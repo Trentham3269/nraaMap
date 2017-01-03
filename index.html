@@ -66,19 +66,20 @@
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
 
-        // Initialise map control - default position: topright
+        // initialise map control - default position: topright
         var info = L.control();
 
-        // Create control's DOM elements
+        // create control's DOM elements
         info.onAdd = function (map) {
           this._div = L.DomUtil.create('div', 'info');
           this.update()
           return this._div;
         };
 
-        // Information to be displayed
+        // information to be displayed
         info.update = function (props) {
           this._div.innerHTML = '<div id="selState">' +
+                                  '<input type="radio" name="state" id="state_ALL" value="ALL"> ALL<br>' +
                                   '<input type="radio" name="state" id="state_ACT" value="ACT"> ACT<br>' +
                                   '<input type="radio" name="state" id="state_NSW" value="NSW"> NSW<br>' +
                                   '<input type="radio" name="state" id="state_NT"  value="NT"> NT<br>'   +
@@ -90,26 +91,31 @@
                                 '</div>'
         };
 
-        // Add the info to the map
+        // add the info to the map
         info.addTo(map);
 
-        // Print full data array to console to confirm expected behaviour
+        // print full data array to console to confirm expected behaviour
         console.log(ranges);
 
         // zoom control for leaflet-zoom-min
         map.addControl(new L.Control.ZoomMin(''))
 
-        // Assign radio button selection to variable
+        // assign radio button selection to variable
         $("#selState").on("click", function() {
 
           var rangesState = $("input[type='radio'][name='state']:checked").val();
 
           console.log(rangesState);
 
-          // Subset data based on user selection
-          rangesSubset = ranges.filter(function (p) {
-            return p.State === rangesState;
-          });
+          // subset data based on user selection
+          var rangesSubset;
+          if (rangesState === "ALL"){
+            rangesSubset = ranges;
+          } else {
+            rangesSubset = ranges.filter(function (p) {
+              return p.State === rangesState;
+            });
+          }
 
           console.log(rangesSubset);
 
@@ -133,6 +139,7 @@
       						map.setView(e.latlng, 13);}
                 /*.on('mouseover', function (e) {
         	        this.openPopup();}*/
+
       			)};
 
         });
