@@ -61,12 +61,14 @@
           zoomControl: false
         });
 
-        // add tiles and attribution
+        // add tiles and attribution to map
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
 
-        // initialise map control - default position: topright
+        var markers = new L.FeatureGroup();
+
+        // initialise map control - default position is topright
         var info = L.control();
 
         // create control's DOM elements
@@ -131,8 +133,7 @@
       						+ "<b>Electronic System:</b> " + rangesSubset[i].ET_System + "<br>"
       						+ "<b>Clubs:</b> " + rangesSubset[i].Clubs
 
-              // add popups
-      				marker = new L.marker([rangesSubset[i].Lat,rangesSubset[i].Long])
+              marker = new L.marker([rangesSubset[i].Lat,rangesSubset[i].Long])
       					.bindPopup(popup)
       					.addTo(map)
       					.on('click', function (e) {
@@ -141,6 +142,10 @@
         	        this.openPopup();}*/
 
       			)};
+
+            markers.addLayer(marker);
+
+            map.addLayer(markers);
 
         });
     </script>
