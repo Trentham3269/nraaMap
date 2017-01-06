@@ -36,29 +36,107 @@
 
     <!-- Data and Map -->
     <script>
-    	// Print array to console
+    	// Print array to console to confirm data exists
     	console.log(ranges);
 
-      // Test layers
-      var bathurst = L.marker([-33.445541, 149.544611]).bindPopup("<b>Range:</b> Bathurst" + "<br>" + "<b>Type:</b> Imperial" + "<br>"),
-          cessnock = L.marker([-32.864497, 151.350778]).bindPopup("Cessnock"),
-          hornsby  = L.marker([-33.68712, 151.084996]).bindPopup("Hornsby"),
-          malabar  = L.marker([-33.958751, 151.260098]).bindPopup("Malabar"),
-          gosford  = L.marker([-33.455674, 151.271125]).bindPopup("Gosford");
+      // Data subsets by State
 
-      var nsw = L.layerGroup([bathurst, cessnock, hornsby, malabar, gosford]);
+      // ACT data
+      var canberra = L.marker([-35.219593, 149.200678]).bindPopup("Canberra");
 
+      var act = L.layerGroup([canberra]);
+
+      // NSW data
+      var bathurst  = L.marker([-33.445541, 149.544611]).bindPopup("<b>Range:</b> Bathurst" + "<br>" + "<b>Type:</b> Imperial" + "<br>"),
+          cessnock  = L.marker([-32.864497, 151.350778]).bindPopup("Cessnock"),
+          hornsby   = L.marker([-33.68712, 151.084996]).bindPopup("Hornsby"),
+          malabar   = L.marker([-33.958751, 151.260098]).bindPopup("Malabar"),
+          gosford   = L.marker([-33.455674, 151.271125]).bindPopup("Gosford"),
+          lithgow   = L.marker([-33.500826, 150.145599]).bindPopup("Lithgow"),
+          lyndhurst = L.marker([-33.681472, 149.048683]).bindPopup("Lyndhurst"),
+          wingham   = L.marker([-31.847171, 152.368060]).bindPopup("Wingham");
+
+      var nsw = L.layerGroup([bathurst, cessnock, hornsby, malabar, gosford, lithgow, lyndhurst, wingham]);
+
+      // NT data
+      var aliceSprings = L.marker([-23.776589, 133.822360]).bindPopup("Alice Springs"),
+          darwin       = L.marker([-12.396858, 130.943770]).bindPopup("Darwin");
+
+      var nt = L.layerGroup([aliceSprings, darwin]);
+
+      // QLD data
       var beaudesert = L.marker([-27.999842, 153.072081]).bindPopup("Beaudesert"),
           belmont    = L.marker([-27.513646, 153.131253]).bindPopup("Belmont"),
           ipswich    = L.marker([-27.745645, 152.847601]).bindPopup("Ipswich"),
-          northArm   = L.marker([-26.525591, 152.974641]).bindPopup("North Arm");
+          northArm   = L.marker([-26.525591, 152.974641]).bindPopup("North Arm")
+          townsville = L.marker([-19.359482, 146.496696]).bindPopup("Townsville");
 
-      var qld = L.layerGroup([beaudesert, belmont, ipswich, northArm]);
+      var qld = L.layerGroup([beaudesert, belmont, ipswich, northArm, townsville]);
 
+      // SA data
+      var lowerLight = L.marker([-34.551299, 138.377132]).bindPopup("Lower Light");
+
+      var sa = L.layerGroup([lowerLight]);
+
+      // TAS data
+      var campbellTown = L.marker([-41.944709, 147.484742]).bindPopup("Campbell Town");
+
+      var tas = L.layerGroup([campbellTown]);
+
+      // VIC data
+      var bacchusMarsh  = L.marker([-37.686605, 144.372153]).bindPopup("Bacchus Marsh");
+          bendigo       = L.marker([-36.749823, 144.33791]).bindPopup("Bendigo");
+          colac         = L.marker([-38.329656, 143.560517]).bindPopup("Colac");
+          dimboola      = L.marker([-36.468902, 142.023421]).bindPopup("Dimboola");
+          dunkeld       = L.marker([-37.612158, 142.329490]).bindPopup("Dunkeld");
+          geelong       = L.marker([-37.993998, 144.328079]).bindPopup("Geelong");
+          glenrowan     = L.marker([-36.472660, 146.223441]).bindPopup("Glenrowan");
+          grantville    = L.marker([-38.429892, 145.512167]).bindPopup("Grantville");
+          horsham       = L.marker([-36.738831, 142.145391]).bindPopup("Horsham");
+          kaniva        = L.marker([-36.392961, 141.248512]).bindPopup("Kaniva");
+          karramomus    = L.marker([-36.491389, 145.505416]).bindPopup("Karramomus");
+          langLang      = L.marker([-38.270122, 145.577144]).bindPopup("Lang Lang");
+          mackereth     = L.marker([-37.844139, 144.558170]).bindPopup("Mackereth");
+          moe           = L.marker([-38.194688, 146.223698]).bindPopup("Moe");
+          nagambie      = L.marker([-36.798395, 145.062803]).bindPopup("Nagambie");
+          portCampbell  = L.marker([-38.620307, 142.973049]).bindPopup("Port Campbell");
+          rosedale      = L.marker([-38.177290, 146.818062]).bindPopup("Rosedale");
+          stArnaud      = L.marker([-36.645540, 143.257655]).bindPopup("St Arnaud");
+          stawell       = L.marker([-37.080025, 142.804456]).bindPopup("Stawell");
+          tallangatta   = L.marker([-36.234508, 147.142489]).bindPopup("Tallangatta");
+          violetTown    = L.marker([-36.656269, 145.734005]).bindPopup("Violet Town");
+          warracknabeal = L.marker([-36.228541, 142.411306]).bindPopup("Warracknabeal");
+          warrnambool   = L.marker([-38.433287, 142.589568]).bindPopup("Warrnambool");
+          yarram        = L.marker([-38.527924, 146.724257]).bindPopup("Yarram");
+
+      var vic = L.layerGroup([bacchusMarsh, bendigo, colac, dimboola, dunkeld, geelong, glenrowan, grantville, horsham
+                              , kaniva, karramomus, langLang, mackereth, moe, nagambie, portCampbell, rosedale
+                              , stArnaud, stawell, tallangatta, violetTown, warracknabeal, warrnambool, yarram]);
+
+      // WA data
+      var albany =  L.marker([-35.060454, 117.838481]).bindPopup("Albany");
+
+      var wa = L.layerGroup([albany]);
+
+      // ALL data
+      var all = L.layerGroup([canberra, bathurst, cessnock, hornsby, malabar, gosford, lithgow, lyndhurst, wingham
+                              , aliceSprings, darwin, beaudesert, belmont, ipswich, northArm, townsville, lowerLight
+                              , campbellTown, bacchusMarsh, bendigo, colac, dimboola, dunkeld, geelong, glenrowan, grantville
+                              , horsham, kaniva, karramomus, langLang, mackereth, moe, nagambie, portCampbell, rosedale
+                              , stArnaud, stawell, tallangatta, violetTown, warracknabeal, warrnambool, yarram, albany]);
+
+      // Define state layers
       var overlayStates = {
+        "ALL": all,
+        "ACT": act,
         "NSW": nsw,
-        "QLD": qld
-      };
+        "NT" : nt,
+        "QLD": qld,
+        "SA" : sa,
+        "TAS": tas,
+        "VIC": vic,
+        "WA" : wa
+     };
 
         // map
         var map = L.map('map', {
