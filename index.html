@@ -16,19 +16,8 @@
     <!-- Leaflet CSS -->
     <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet"/>
 
-    <!-- leaflet-zoom-min CSS -->
-    <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
-    <link href="L.Control.ZoomMin.css", rel="stylesheet", media="screen"/>
-
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-
-    <!-- leaflet-zoom-min JS -->
-    <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
-    <script src="L.Control.ZoomMin.js"></script>
-
-    <!-- Load ranges data from external .js file -->
-    <script src="ranges.js"></script>
   </head>
   <body>
     <!-- Div for map -->
@@ -36,9 +25,6 @@
 
     <!-- Data and Map -->
     <script>
-    	// Print array to console to confirm data exists
-    	console.log(ranges);
-
       // Data subsets by State
 
       // ACT data
@@ -144,7 +130,7 @@
           zoom: 4,
           minZoom: 5,
           maxZoom: 16,
-          zoomControl: false
+          zoomControl: true
         });
 
         // add tiles and attribution
@@ -153,9 +139,6 @@
         }).addTo(map);
 
         L.control.layers(null, overlayStates).addTo(map);
-
-        // zoom control for leaflet-zoom-min
-        map.addControl(new L.Control.ZoomMin(''))
     </script>
   </body>
 </html>
