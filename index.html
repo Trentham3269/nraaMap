@@ -16,16 +16,8 @@
     <!-- Leaflet CSS -->
     <link href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" rel="stylesheet"/>
 
-    <!-- leaflet-zoom-min CSS -->
-    <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
-    <link href="L.Control.ZoomMin.css", rel="stylesheet", media="screen"/>
-
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-
-    <!-- leaflet-zoom-min JS -->
-    <!-- https://github.com/alanshaw/leaflet-zoom-min.git -->
-    <script src="L.Control.ZoomMin.js"></script>
 
     <!-- Load ranges data from external .js file -->
     <script src="ranges.js"></script>
@@ -52,9 +44,6 @@
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
-
-        // zoom control for leaflet-zoom-min
-        map.addControl(new L.Control.ZoomMin(''))
 
     		// add markers for each data point
     		for (var i = 0; i < ranges.length; i++) {
