@@ -217,6 +217,78 @@ var ranges =
       "Clubs": "Albany"
     },
     {
+      "Range": "Chapman Valley",
+      "Lat": -28.508832,
+      "Long": 114.818389,
+      "State": "WA",
+      "Type": "?",
+      "Max_Distance": "?",
+      "Targets": "3",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Chapman Valley"
+    },
+    {
+      "Range": "Chidlow",
+      "Lat": -31.891249,
+      "Long": 116.263194,
+      "State": "WA",
+      "Type": "?",
+      "Max_Distance": "?",
+      "Targets": "?",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "?"
+    },
+    {
+      "Range": "Coolilup",
+      "Lat": -33.594234,
+      "Long": 115.521203,
+      "State": "WA",
+      "Type": "Metric",
+      "Max_Distance": "900m",
+      "Targets": "?",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Busselton"
+    },
+    {
+      "Range": "Meekatharra",
+      "Lat": -26.576190,
+      "Long": 118.488107,
+      "State": "WA",
+      "Type": "Imperial",
+      "Max_Distance": "900y",
+      "Targets": "?",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Meekatharra"
+    },
+    {
+      "Range": "Wurgabup",
+      "Lat": -33.568009,
+      "Long": 117.915123,
+      "State": "WA",
+      "Type": "?",
+      "Max_Distance": "?",
+      "Targets": "?",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Wurgabup"
+    },
+    {
+      "Range": "Yarloop",
+      "Lat": -32.956219,
+      "Long": 115.921104,
+      "State": "WA",
+      "Type": "Metric",
+      "Max_Distance": "?",
+      "Targets": "10",
+      "Electronic": "?",
+      "ET_System": "?",
+      "Clubs": "Mandurah, Yarloop"
+    },
+    {
       "Range": "Micket Creek",
       "Lat": -12.396858,
       "Long": 130.943770,
