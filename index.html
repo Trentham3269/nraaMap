@@ -60,10 +60,10 @@
     				marker = new L.marker([ranges[i].Lat,ranges[i].Long])
     					.bindPopup(popup)
     					.addTo(map)
-    					.on('click', function (e) {
-    						map.setView(e.latlng, 13);}
-              /*.on('mouseover', function (e) {
-      	        this.openPopup();}*/
+    					/*.on('click', function (e) {
+    						map.setView(e.latlng, 13);}*/
+              .on('click', function (e) {
+      	        this.openPopup();}
     			)};
     </script>
   </body>
